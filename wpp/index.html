@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Atendimento Oficial - Ana Sacarelli</title>
+
+<!--
+  =========================================================
+  PRESELL PAGE - PRÉ-WHATSAPP
+  Objetivo: redirecionar tráfego pago (TikTok Ads) para o
+  WhatsApp da especialista, com elementos de confiança,
+  prova social e urgência controlada por JS.
+  Tudo em um único arquivo (HTML + CSS + JS embutidos)
+  para carregamento instantâneo, sem dependências externas.
+  =========================================================
+-->
+
+<style>
+  /* ---------- RESET BÁSICO ---------- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ---------- VARIÁVEIS DE COR ---------- */
+  :root {
+    --bg-color: #fafafa;        /* fundo cinza bem claro */
+    --text-color: #2b2b2b;      /* grafite escuro */
+    --text-muted: #6b6b6b;      /* cinza médio para textos secundários */
+    --whatsapp-green: #25D366;  /* verde oficial do WhatsApp */
+    --whatsapp-green-dark: #1ebe5d;
+    --urgency-color: #c0392b;   /* leve vermelho para urgência */
+    --verified-blue: #1da1f2;   /* azul do selo de verificado */
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- CONTAINER PRINCIPAL (MOBILE-FIRST) ---------- */
+  .page-wrapper {
+    width: 100%;
+    max-width: 480px; /* trava o layout em telas maiores, mas é pensado pra mobile */
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 24px 40px;
+  }
+
+  /* ---------- 1. AVISO DE REDIRECIONAMENTO ---------- */
+  .redirect-notice {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 28px;
+    max-width: 320px;
+  }
+
+  /* ---------- 2. ELEMENTO DE CONEXÃO (FOTO + NOME + STATUS) ---------- */
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .profile-photo-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 14px;
+  }
+
+  .profile-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--whatsapp-green); /* borda fina verde */
+    display: block;
+  }
+
+  /* Selo de verificado (azul), posicionado no canto da foto */
+  .verified-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background-color: var(--verified-blue);
+    border-radius: 50%;
+    border: 2px solid var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .verified-badge svg {
+    width: 14px;
+    height: 14px;
+    fill: #ffffff;
+  }
+
+  .specialist-name {
+    font-size: 19px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 6px;
+  }
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* Bolinha verde com efeito de pulso sutil para indicar "Online" */
+  .status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--whatsapp-green);
+    display: inline-block;
+    animation: statusPulse 1.6s infinite ease-in-out;
+  }
+
+  @keyframes statusPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    70%  { box-shadow: 0 0 0 7px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  /* ---------- 3. PROMESSA CURTA ---------- */
+  .promise-text {
+    font-size: 21px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-color);
+    line-height: 1.35;
+    margin-bottom: 26px;
+    max-width: 340px;
+  }
+
+  /* ---------- 4. BOTÃO DE AÇÃO (CTA) ---------- */
+  .cta-button {
+    width: 100%;
+    max-width: 360px;
+    background-color: var(--whatsapp-green);
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    border-radius: 14px; /* cantos levemente arredondados */
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    animation: ctaPulse 2.4s infinite ease-in-out; /* pulso leve, sem parecer spam */
+    transition: transform 0.15s ease, background-color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .cta-button:active {
+    transform: scale(0.97);
+    background-color: var(--whatsapp-green-dark);
+  }
+
+  .cta-button svg {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
+    flex-shrink: 0;
+  }
+
+  @keyframes ctaPulse {
+    0%   { box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35); }
+    50%  { box-shadow: 0 4px 22px rgba(37, 211, 102, 0.6); }
+    100% { box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35); }
+  }
+
+  /* ---------- 5. URGÊNCIA ---------- */
+  .urgency-text {
+    font-size: 13.5px;
+    color: var(--urgency-color);
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1.4;
+    max-width: 320px;
+  }
+
+  .urgency-text #vagas {
+    font-weight: 700;
+  }
+
+  /* Pequeno respiro extra no final pra não colar no rodapé em telas pequenas */
+  .spacer {
+    flex: 1;
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- 1. AVISO DE REDIRECIONAMENTO -->
+    <p class="redirect-notice">
+      Você está sendo direcionado para o atendimento oficial no WhatsApp com a especialista...
+    </p>
+
+    <!-- 2. ELEMENTO DE CONEXÃO -->
+    <div class="profile-section">
+      <div class="profile-photo-wrapper">
+        <!-- A foto deve estar salva em img/ana.jpg -->
+        <img src="img/ana.png" alt="Foto de perfil de Ana Sacarelli" class="profile-photo">
+
+        <!-- Selo de verificado (azul) -->
+        <span class="verified-badge" aria-label="Perfil verificado">
+          <svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg>
+        </span>
+      </div>
+
+      <h1 class="specialist-name">Ana Sacarelli</h1>
+
+      <div class="status-indicator">
+        <span class="status-dot"></span>
+        <span>Online agora</span>
+      </div>
+    </div>
+
+    <!-- 3. PROMESSA CURTA -->
+    <p class="promise-text">
+      Clique abaixo para fazer sua consulta gratuita.
+    </p>
+
+    <!-- 4. BOTÃO DE AÇÃO (CTA) -->
+    <a href="https://wa.link/j0da6o" class="cta-button" id="ctaButton">
+      <!-- Ícone oficial do WhatsApp em SVG embutido (sem dependência externa) -->
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.737 5.5 2.025 7.82L0 32l8.36-2.07A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.27c-2.61 0-5.06-.71-7.17-1.95l-.51-.3-4.96 1.23 1.26-4.83-.33-.5A13.23 13.23 0 0 1 2.73 16C2.73 8.66 8.66 2.73 16 2.73S29.27 8.66 29.27 16 23.34 29.27 16 29.27zm7.27-9.86c-.4-.2-2.36-1.16-2.72-1.3-.37-.13-.63-.2-.9.2-.27.4-1.03 1.3-1.27 1.56-.23.27-.47.3-.86.1-.4-.2-1.67-.62-3.18-1.97-1.18-1.05-1.97-2.35-2.2-2.75-.23-.4-.02-.61.18-.81.2-.2.43-.5.65-.76.2-.27.27-.46.4-.76.13-.3.07-.56-.07-.76-.13-.2-.6-1.46-.83-2-.2-.5-.43-.43-.6-.44h-.5c-.17 0-.46.07-.7.33-.23.27-.9.86-.9 2.1 0 1.24.9 2.43 1.03 2.6.13.16 1.76 2.7 4.3 3.7 2.55 1 2.55.67 3.01.63.46-.03 1.5-.6 1.7-1.2.2-.6.2-1.1.13-1.2-.06-.13-.23-.2-.6-.4z"/>
+      </svg>
+      <span>Iniciar Atendimento no WhatsApp</span>
+    </a>
+
+    <!-- 5. URGÊNCIA -->
+    <p class="urgency-text">
+      Atenção: devido ao limite de atendimentos manuais, as vagas para a consulta gratuita de hoje são limitadas e restam apenas: <span id="vagas">10</span> vagas.
+    </p>
+
+    <div class="spacer"></div>
+  </div>
+
+  <script>
+    /* =========================================================
+       6. SCRIPT DE CONTAGEM REGRESSIVA DINÂMICA DAS VAGAS
+       =========================================================
+       Lógica:
+       - O número de vagas começa em 10.
+       - Cada decremento é agendado individualmente com setTimeout,
+         usando o tempo ACUMULADO desde o carregamento da página
+         (conforme pedido: 2s, +4s, +8s, +12s...).
+       - O contador NUNCA chega a zero: ele para definitivamente
+         em 3 vagas para manter o realismo (não pode esgotar e
+         sumir a urgência se o usuário ficar muito tempo na página).
+       - Os intervalos depois do 4º passo (6 vagas) continuam
+         seguindo a mesma lógica de espaçamento crescente, até
+         travar em 3.
+    ========================================================= */
+
+    (function () {
+      var vagasElement = document.getElementById('vagas');
+
+      // Lista de "passos": cada item é o tempo ACUMULADO (em ms)
+      // em que o número de vagas deve mudar, e o novo valor.
+      // 2s -> 9 | 6s -> 8 | 14s -> 7 | 26s -> 6 | 42s -> 5 | 62s -> 4 | 86s -> 3 (FIM)
+      var steps = [
+        { time: 2000,  vagas: 9 },
+        { time: 6000,  vagas: 8 },
+        { time: 14000, vagas: 7 },
+        { time: 26000, vagas: 6 },
+        { time: 42000, vagas: 5 },
+        { time: 62000, vagas: 4 },
+        { time: 86000, vagas: 3 } // valor final - o contador para aqui
+      ];
+
+      steps.forEach(function (step) {
+        setTimeout(function () {
+          if (vagasElement) {
+            vagasElement.textContent = step.vagas;
+          }
+        }, step.time);
+      });
+    })();
+  </script>
+
+</body>
+</html>
