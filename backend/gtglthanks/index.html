@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You! - Order Confirmed</title>
     <style>
-        /* Estilos base e variáveis (Mantidos do Upsell) */
+        /* Estilos base e variáveis */
         :root {
             --bg-color: #f4f5f7;
             --text-color: #2d3748;
@@ -32,12 +32,12 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             box-sizing: border-box;
-            text-align: center; /* Centraliza todo o texto da página de obrigado */
+            text-align: center;
         }
 
         /* Tipografia */
         h1 {
-            color: var(--btn-green); /* Título de sucesso em verde */
+            color: var(--btn-green);
             font-size: 32px;
             margin-bottom: 20px;
             line-height: 1.2;
@@ -83,13 +83,18 @@
             display: block;
         }
 
+        /* Área de Download */
+        .download-area {
+            margin: 40px 0;
+        }
+
         /* Botão de Download Otimizado */
         .btn {
             display: block;
             width: 100%;
             max-width: 500px;
             box-sizing: border-box;
-            margin: 40px auto;
+            margin: 0 auto 15px auto; /* Ajustado para aproximar o link de texto */
             padding: 20px 15px;
             background-color: var(--btn-green);
             color: #ffffff;
@@ -108,6 +113,20 @@
             transform: translateY(-2px);
         }
 
+        /* Link Alternativo (Caso o botão falhe) */
+        .alt-link {
+            display: inline-block;
+            color: #718096;
+            font-size: 16px;
+            text-decoration: underline;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .alt-link:hover {
+            color: #4a5568;
+        }
+
         /* Responsividade para Celulares */
         @media (max-width: 600px) {
             .container {
@@ -119,6 +138,7 @@
             p { font-size: 16px; }
             .btn { font-size: 19px; padding: 18px 10px; }
             .support-email { font-size: 18px; }
+            .alt-link { font-size: 15px; }
         }
     </style>
 </head>
@@ -138,8 +158,13 @@
 
         <p>You can download your PDF guide right now by clicking the green button below. We have also sent a backup copy to the email address you used at checkout (remember to check your spam/junk folder just in case).</p>
 
-        <!-- Botão de Download com o caminho relativo para a pasta "entregavel" -->
-        <a href="entregavel/natural-blood-sugar-balance.pdf" class="btn" download>DOWNLOAD MY GUIDE NOW</a>
+        <div class="download-area">
+            <!-- Botão de Download Principal -->
+            <a href="entregavel/natural-blood-sugar-balance.pdf" class="btn" download>DOWNLOAD MY GUIDE NOW</a>
+            
+            <!-- Link de Texto Alternativo -->
+            <a href="entregavel/natural-blood-sugar-balance.pdf" class="alt-link" target="_blank">Click here if the button doesn't work</a>
+        </div>
 
         <div class="support-box">
             <p style="margin-bottom: 5px;"><strong>Need any help?</strong></p>
