@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - Order Confirmed</title>
+    <style>
+        /* Estilos base e variáveis (Mantidos do Upsell) */
+        :root {
+            --bg-color: #f4f5f7;
+            --text-color: #2d3748;
+            --primary-color: #1a202c;
+            --btn-green: #28a745;
+            --btn-green-hover: #218838;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px 10px;
+        }
+
+        /* Container principal da página */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+            text-align: center; /* Centraliza todo o texto da página de obrigado */
+        }
+
+        /* Tipografia */
+        h1 {
+            color: var(--btn-green); /* Título de sucesso em verde */
+            font-size: 32px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        strong {
+            color: #000;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 40px 0;
+        }
+
+        /* Caixa de Suporte */
+        .support-box {
+            background-color: #f8f9fa;
+            border: 1px solid #cbd5e0;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 40px 0 20px 0;
+        }
+
+        .support-email {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Botão de Download Otimizado */
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            margin: 40px auto;
+            padding: 20px 15px;
+            background-color: var(--btn-green);
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: normal;
+        }
+
+        .btn:hover {
+            background-color: var(--btn-green-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Responsividade para Celulares */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+                margin: 20px auto;
+            }
+            h1 { font-size: 26px; }
+            h2 { font-size: 20px; }
+            p { font-size: 16px; }
+            .btn { font-size: 19px; padding: 18px 10px; }
+            .support-email { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1>🎉 Congratulations! Your Order is Confirmed.</h1>
+        
+        <p>Welcome to the <strong>Gut Glucose</strong> community. We are thrilled to have you on board.</p>
+        
+        <p>Your payment was successfully processed, and your protocol is ready.</p>
+        
+        <hr>
+
+        <h2>Access Your Guide Immediately</h2>
+
+        <p>You can download your PDF guide right now by clicking the green button below. We have also sent a backup copy to the email address you used at checkout (remember to check your spam/junk folder just in case).</p>
+
+        <!-- Botão de Download com o caminho relativo para a pasta "entregavel" -->
+        <a href="entregavel/natural-blood-sugar-balance.pdf" class="btn" download>DOWNLOAD MY GUIDE NOW</a>
+
+        <div class="support-box">
+            <p style="margin-bottom: 5px;"><strong>Need any help?</strong></p>
+            <p style="font-size: 16px; color: #4a5568;">If you have any questions or issues accessing your file, please don't hesitate to reach out to our dedicated support team. We usually reply within 24 hours.</p>
+            <span class="support-email">yourvipsupport@gmail.com</span>
+        </div>
+
+        <p style="margin-top: 40px; color: #718096; font-size: 14px;">Thank you for trusting Dr. Brian and our team.</p>
+
+    </div>
+
+</body>
+</html>
