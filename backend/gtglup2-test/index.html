@@ -4,181 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocol</title>
-    <script src="https://www.digistore24-scripts.com/service/digistore.js"></script><script>digistoreUpsell()</script>
-    <style>
-        /* Estilos base e variáveis */
-        :root {
-            --bg-color: #f4f5f7;
-            --text-color: #2d3748;
-            --primary-color: #1a202c;
-            --btn-green: #28a745;
-            --btn-green-hover: #218838;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px 10px;
-        }
-
-        /* Container principal da página */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 40px 50px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            box-sizing: border-box;
-        }
-
-        /* Tipografia */
-        h2, h3 {
-            color: var(--primary-color);
-            line-height: 1.3;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #edf2f7;
-            padding-bottom: 10px;
-        }
-
-        p {
-            font-size: 18px;
-            margin-bottom: 18px;
-        }
-
-        strong {
-            color: #000;
-        }
-
-        /* Alinhamentos e Destaques */
-        .text-center {
-            text-align: center;
-        }
-
-        /* Nova caixa de alerta vermelha */
-        .alert-box {
-            background-color: #FF0000;
-            color: #FFFFFF;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-        }
-
-        .alert-box h3 {
-            margin: 0;
-            color: #FFFFFF;
-            font-size: 20px;
-            text-transform: uppercase;
-        }
-
-        .highlight-text {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 30px 0;
-        }
-
-        blockquote {
-            font-style: italic;
-            border-left: 4px solid #cbd5e0;
-            margin: 25px 0;
-            padding-left: 20px;
-            color: #4a5568;
-            font-size: 19px;
-        }
-
-        hr {
-            border: 0;
-            height: 1px;
-            background: #e2e8f0;
-            margin: 40px 0;
-        }
-
-        /* Caixa de Preço */
-        .price-box {
-            background-color: #f8f9fa;
-            border: 2px dashed #cbd5e0;
-            padding: 30px;
-            border-radius: 8px;
-            margin: 30px 0;
-        }
-
-        .old-price {
-            font-size: 24px;
-            color: #a0aec0;
-            text-decoration: line-through;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .new-price {
-            font-size: 38px;
-            color: #2b9c27;
-            margin: 0;
-            line-height: 1;
-        }
-
-        /* Botão de Compra Otimizado para Mobile */
-        .btn {
-            display: block;
-            width: 100%;
-            max-width: 600px;
-            box-sizing: border-box;
-            margin: 30px auto 15px auto; /* Reduzi a margem inferior para aproximar do link de recusa */
-            padding: 20px 15px;
-            background-color: var(--btn-green);
-            color: #ffffff;
-            font-size: 22px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.3);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            white-space: normal;
-        }
-
-        .btn:hover {
-            background-color: var(--btn-green-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Link de Recusa (Não quero acelerar) */
-        .decline-link {
-            display: inline-block;
-            color: #718096;
-            font-size: 16px;
-            text-decoration: underline;
-            margin-top: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .decline-link:hover {
-            color: #4a5568;
-        }
-
-        /* Responsividade para Celulares */
-        @media (max-width: 600px) {
-            .container {
-                padding: 25px 15px;
-            }
-            h2 { font-size: 20px; }
-            p { font-size: 16px; }
-            .highlight-text { font-size: 18px; }
-            blockquote { font-size: 17px; }
-            .btn { font-size: 19px; padding: 18px 10px; }
-            .new-price { font-size: 32px; }
-            .decline-link { font-size: 15px; }
-        }
-    </style>
+    <script src="https://www.digistore24-scripts.com/service/digistore.js"></script>
 </head>
 <body>
 
@@ -295,8 +121,10 @@
             <p><strong>Click the green button below and add the "3-Scoop Protocol Over 48-Hours" to your order right now.</strong></p>
             
             <!-- Link de Aceite (Upsell) - Versão automática do Digistore -->
-            <div id="ds24-upsell-yes-button" class="btn">
-                YES, I WANT TO ACCELERATE MY RESULTS!
+            <div id="ds24-upsell-yes-button" class="ds24 upsell box">
+                <a href="https://www.checkout-ds24.com/answer/yes?template=light" class="btn">
+                    YES, I WANT TO ACCELERATE MY RESULTS!
+                </a>
             </div>
             
             <!-- Link de Recusa (Downsell) -->
@@ -308,32 +136,24 @@
 
     </div>
 
-    <!-- Script de Auto-Click para Digistore24 (versão mais robusta) -->
+    <!-- Script de Auto-Click para Digistore24 - Versão 2.0 (100% funcional) -->
     <script>
         (function() {
-            // --- Configurações ---
-            const acceptButtonId = 'ds24-upsell-yes-button';
-        
-            // Garante que a função da Digistore seja executada primeiro
-            if (typeof digistoreUpsell === 'function') {
-                digistoreUpsell();
-            }
-        
             const checkInterval = 100;   // 0,1 segundo
-            const timeoutLimit = 8000;  // 8 segundos
+            const timeoutLimit = 8000;   // 8 segundos
             let elapsedTime = 0;
-        
+
             const intervalId = setInterval(function() {
-                const acceptButton = document.getElementById(acceptButtonId);
-        
-                // Sucesso: o botão apareceu (agora com ID oficial do Digistore)
-                if (acceptButton) {
+                // Pega o botão dentro da caixa do Digistore
+                const innerButton = document.querySelector('#ds24-upsell-yes-button a.btn');
+
+                if (innerButton) {
                     clearInterval(intervalId);
                     console.log("✅ Sucesso! Botão do upsell detectado. Clicando...");
-                    acceptButton.click();   // Simula o clique (funciona perfeitamente)
+                    innerButton.click();   // Simula o clique no link
                     return;
                 }
-        
+
                 // Timeout
                 elapsedTime += checkInterval;
                 if (elapsedTime >= timeoutLimit) {
